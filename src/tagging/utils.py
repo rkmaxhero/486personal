@@ -180,6 +180,8 @@ def is_ranking_hit(probs, labels, top=1):
         return 0
 
 def tag_hits(logits, tok_labels, top=1):
+    print("gold_logits length:", len(logits))
+    print("tok_labels length:", len(tok_labels))
     global ARGS
     
     probs = softmax(np.array(logits)[:, :, : ARGS.num_tok_labels - 1], axis=2)

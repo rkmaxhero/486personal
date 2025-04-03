@@ -1,8 +1,8 @@
 ################################################################################
-IN SEQ: 	 b'the ho ##rre ##ndo ##us rest ##ura ##unt serves salad .'
-GOLD SEQ: 	 b'the ho ##rre ##ndo ##us rest ##ura ##unt serves salad .'
-PRED SEQ:	 b'the rest ##ura ##unt serves salad .'
-GOLD DIST: 	 [np.float32(0.0), np.float32(0.0), np.float32(0.0), np.float32(0.0), np.float32(0.0), np.float32(0.0), np.float32(0.0), np.float32(0.0), np.float32(0.0), np.float32(0.0), np.float32(0.0)]
-PRED DIST: 	 [np.float32(2.6818623e-05), np.float32(0.99976546), np.float32(0.99971884), np.float32(0.9997656), np.float32(0.99973625), np.float32(2.0178572e-05), np.float32(4.2094638e-05), np.float32(0.00035821594), np.float32(5.7327957e-06), np.float32(3.9516335e-06), np.float32(1.2584355e-06)]
-GOLD TOK: 	 []
-PRED TOK: 	 []
+IN SEQ:	 b'the horrendous resturaunt serves salad .'
+GOLD SEQ:	 b'the horrendous resturaunt serves salad .'
+PRED SEQ:	 b'the resturaunt serves salad .'
+GOLD DIST:	 [np.float32(0.0), np.float32(0.0), np.float32(0.0), np.float32(0.0), np.float32(0.0), np.float32(0.0), np.float32(0.0), np.float32(0.0), np.float32(0.0), np.float32(0.0), np.float32(0.0)]
+PRED DIST:	 [np.float32(2.6818623e-05), np.float32(0.99976546), np.float32(0.99971884), np.float32(0.9997656), np.float32(0.99973625), np.float32(2.0178572e-05), np.float32(4.2094638e-05), np.float32(0.00035821594), np.float32(5.7327957e-06), np.float32(3.9516335e-06), np.float32(1.2584355e-06)]
+GOLD TOK:	 []
+PRED TOK:	 []

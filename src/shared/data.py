@@ -44,6 +44,21 @@ def softmax(x, axis=None):
     return y / y.sum(axis=axis, keepdims=True)
 
 
+# def get_tok_labels(s_diff):
+#     pre_tok_labels = []
+#     post_tok_labels = []
+#     for tag, chunk in s_diff:
+#         if tag == '=':
+#             pre_tok_labels += [0] * len(chunk)
+#             post_tok_labels += [0] * len(chunk)
+#         elif tag == '-':
+#             pre_tok_labels += [1] * len(chunk)
+#         elif tag == '+':
+#             post_tok_labels += [1] * len(chunk)
+#         else:
+#             pass
+
+#     return pre_tok_labels, post_tok_labels
 def get_tok_labels(s_diff):
     pre_tok_labels = []
     post_tok_labels = []
@@ -52,13 +67,19 @@ def get_tok_labels(s_diff):
             pre_tok_labels += [0] * len(chunk)
             post_tok_labels += [0] * len(chunk)
         elif tag == '-':
+            # Mark a deletion (token appears in gold but is missing in prediction)
             pre_tok_labels += [1] * len(chunk)
+            # Insert placeholder zeros in the predicted labels for alignment.
+            post_tok_labels += [0] * len(chunk)
         elif tag == '+':
+            # Mark an insertion (token appears in prediction but not in gold)
             post_tok_labels += [1] * len(chunk)
+            # Optionally, to preserve alignment, you could add a placeholder in gold,
+            # but typically downstream code expects the gold tokens’ labels to match the gold sequence.
         else:
             pass
-
     return pre_tok_labels, post_tok_labels
+
 
 
 def noise_seq(seq, drop_prob=0.25, shuf_dist=3, drop_set=None, keep_bigrams=False):
@@ -149,6 +170,14 @@ def get_examples(data_path, tok2id, max_seq_len,
         # get diff + binary diff masks
         tok_diff = diff(tokens, post_tokens)
         pre_tok_labels, post_tok_labels = get_tok_labels(tok_diff)
+        
+        print("Example", i)
+        print("Gold tokens length:", len(tokens))
+        print("Pre_tok_labels length:", len(pre_tok_labels))
+        print("POS tokens length:", len(pos))
+        print("Rels length:", len(rels))
+        print("Post tokens length:", len(post_tokens))
+        print("Post_tok_labels length:", len(post_tok_labels))
                    
         # make sure everything lines up    
         if len(tokens) != len(pre_tok_labels) \
@@ -240,6 +269,11 @@ def get_dataloader(data_path, tok2id, batch_size,
             pre_tok_label, post_tok_label,
             rel_ids, pos_ids, categories
         ] = [torch.stack(x) for x in zip(*data)]
+        
+        # Debug prints: Print shapes for one batch
+        print("Batch pre_ids shape:", src_id.shape)
+        print("Batch pre_tok_label shape:", pre_tok_label.shape)
+        print("Batch post_tok_label shape:", post_tok_label.shape)
 
         # cut off at max len of this batch for unpacking/repadding
         max_len = max(src_len)
