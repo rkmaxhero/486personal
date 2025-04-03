@@ -81,7 +81,7 @@ class BilinearAttention(nn.Module):
         attn_scores = self.score_fn(att_keys, att_query)
 
         if mask is not None:
-            attn_scores = attn_scores.masked_fill(mask, -float('inf'))
+            attn_scores = attn_scores.masked_fill(mask.bool(), -float('inf'))
 
         attn_probs = self.softmax(attn_scores)
 
@@ -154,7 +154,7 @@ class LSTMEncoder(nn.Module):
         h0, c0 = self.init_state(batch_size=src_embedding.size(0))
 
         if self.pack:
-            inputs = pack_padded_sequence(src_embedding, srclens, batch_first=True)
+            inputs = pack_padded_sequence(src_embedding, srclens.detach().cpu(), batch_first=True)
         else:
             inputs = src_embedding
 
