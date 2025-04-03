@@ -29,6 +29,10 @@ tokenizer = BertTokenizer.from_pretrained(ARGS.bert_model, cache_dir=ARGS.workin
 tok2id = tokenizer.vocab
 tok2id['<del>'] = len(tok2id)
 
+# Add debug prints
+print("LOADING TEST FILE:", os.path.abspath(ARGS.test))
+with open(ARGS.test, "r") as f:
+    print("FIRST LINE:", f.readline())
 
 eval_dataloader, num_eval_examples = get_dataloader(
     ARGS.test,
