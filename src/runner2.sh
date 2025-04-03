@@ -3,6 +3,6 @@ python joint/inference.py \
        --test_batch_size 1 --bert_full_embeddings --debias_weight 1.3 --token_softmax \
        --pointer_generator --coverage \
        --working_dir TEST \
-       --test rk3.test \
+       --test rk.test \
        --checkpoint model.ckpt \
        --inference_output TEST/output.txt
