@@ -5,17 +5,37 @@ import numpy as np
 from collections import defaultdict
 import re
 
-# HARDCODED SENTENCES - COMBINE BOTH TEST FILES
-SENTENCES = [
-    # Original test sentences
-    "We will not go to that abysmal resturaunt.",
-    "The politician's idiotic proposal will destroy the country.",
-]
+# Check if a file path is provided
+if len(sys.argv) != 2:
+    print("Usage: python bias_from_file.py <input_file>")
+    print("Input file should contain one sentence per line")
+    sys.exit(1)
 
-print(f"Analyzing {len(SENTENCES)} sentences for bias...")
+input_file = sys.argv[1]
+
+# Read sentences from a file
+def read_sentences_from_file(file_path):
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            # Strip whitespace and filter out empty lines
+            sentences = [line.strip() for line in f.readlines() if line.strip()]
+        return sentences
+    except Exception as e:
+        print(f"Error reading file: {e}")
+        return []
+
+# Read sentences from the file
+sentences = read_sentences_from_file(input_file)
+
+if not sentences:
+    print(f"No sentences found in {input_file} or file could not be read.")
+    sys.exit(1)
+
+print(f"Loaded {len(sentences)} sentences from {input_file}")
 
 # Dictionary of common biased terms and their neutral alternatives
 biased_terms = {
+    # Original terms
     "abysmal": "poor",
     "terrible": "problematic",
     "awful": "challenging",
@@ -41,7 +61,8 @@ biased_terms = {
     "unprofessional": "inappropriate",
     "outstanding": "effective",
     "flawed": "imperfect",
-    "devastating": "significant",
+    
+    # New terms from additional sentences
     "devastate": "significantly affect",
     "careless": "imprecise",
     "flawless": "well-executed",
@@ -86,7 +107,7 @@ print("Running bias analysis...")
 print("-" * 80)
 
 # Process each sentence
-for sentence in SENTENCES:
+for sentence in sentences:
     print("\n" + "="*80)
     print(f"Original sentence: {sentence}")
     
@@ -147,4 +168,4 @@ for sentence in SENTENCES:
     else:
         print("\nNo biased tokens identified in this sentence.")
 
-print("\nNOTE: This analysis used a dictionary-based approach to detect bias in text.")
+print("\nNOTE: This is a dictionary-based analysis to detect bias in text.") 

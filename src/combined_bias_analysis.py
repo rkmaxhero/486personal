@@ -10,6 +10,29 @@ SENTENCES = [
     # Original test sentences
     "We will not go to that abysmal resturaunt.",
     "The politician's idiotic proposal will destroy the country.",
+    "The chef created an incredible meal that amazed everyone at the table.",
+    "The latest movie was absolutely awful and a waste of time.",
+    "She is the most brilliant scientist in the field.",
+    "That was a stupid mistake that could have been avoided.",
+    "The company's profits have declined due to poor management.",
+    "His presentation was perfect and left the audience speechless.",
+    "The government's new policy is a terrible approach to solving the issue.",
+    "The CEO made a disastrous decision that cost the company millions.",
+    "I think the plan is flawed and will never work.",
+    "The entire team did an outstanding job on the project.",
+    "His behavior at the meeting was completely unprofessional.",
+    
+    # Additional test sentences
+    "The president's new policy will devastate small businesses nationwide.",
+    "The experiment failed because the researcher made a careless error.",
+    "This is the best restaurant in the city, with amazing food and service.",
+    "Her performance was absolutely flawless; no one could have done better.",
+    "The company's decision to lay off workers was cruel and unnecessary.",
+    "That software update completely ruined my computer's performance.",
+    "He is undoubtedly the most talented musician in the orchestra.",
+    "The housing market crash left thousands of families in dire circumstances.",
+    "These outdated regulations are stifling innovation in the industry.",
+    "Their customer service was horrible and I'll never shop there again."
 ]
 
 print(f"Analyzing {len(SENTENCES)} sentences for bias...")
@@ -147,4 +170,4 @@ for sentence in SENTENCES:
     else:
         print("\nNo biased tokens identified in this sentence.")
 
-print("\nNOTE: This analysis used a dictionary-based approach to detect bias in text.")
+print("\nNOTE: This analysis used a dictionary-based approach to detect bias in text.") 
