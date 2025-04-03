@@ -102,3 +102,12 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+model.ckpt
+bias_data.zip
+bias_data/
+__MACOSX/
+cache/
+test_data.pkl
+output.txt
+stats.txt
+
