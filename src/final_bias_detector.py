@@ -222,21 +222,21 @@ try:
             # Dictionary of common biased terms and their neutral alternatives
             biased_terms = {
                 "abysmal": "poor",
-                "terrible": "problematic",
-                "awful": "challenging",
-                "fantastic": "good",
-                "amazing": "effective",
-                "best": "good",
-                "worst": "poor",
-                "stupid": "questionable",
-                "idiotic": "ill-conceived",
-                "genius": "clever",
-                "beautiful": "attractive",
-                "ugly": "unattractive",
-                "incredible": "notable",
-                "horrific": "concerning",
-                "destroy": "negatively impact",
-                "ruined": "negatively impacted"
+                # "terrible": "problematic",
+                # "awful": "challenging",
+                # "fantastic": "good",
+                # "amazing": "effective",
+                # "best": "good",
+                # "worst": "poor",
+                # "stupid": "questionable",
+                # "idiotic": "ill-conceived",
+                # "genius": "clever",
+                # "beautiful": "attractive",
+                # "ugly": "unattractive",
+                # "incredible": "notable",
+                # "horrific": "concerning",
+                # "destroy": "negatively impact",
+                # "ruined": "negatively impacted"
             }
             
             # Generate suggested replacement
