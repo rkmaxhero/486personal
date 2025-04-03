@@ -106,3 +106,4 @@ bias_data/
 bias_data.zip
 model.ckpt
 __MACOSX/
+TEST/
